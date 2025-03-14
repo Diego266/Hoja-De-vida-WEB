@@ -5,9 +5,33 @@ document.addEventListener("DOMContentLoaded", function() {
     const tabContents = document.querySelectorAll(".tab-content");
     const profileImage = document.querySelector(".profile-image");
 
+    // Crear el modal de confirmación
+    const modal = document.createElement("div");
+    modal.className = "modal";
+    modal.innerHTML = `
+        <div class="modal-content">
+            <p>¿Realmente deseas cambiar el color del tema?</p>
+            <button class="modal-button" id="confirm-yes">Sí</button>
+            <button class="modal-button" id="confirm-no">No</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
     themeToggle.addEventListener("click", function() {
+        // Mostrar el modal
+        modal.style.display = "flex";
+    });
+
+    document.getElementById("confirm-yes").addEventListener("click", function() {
+        // Cambiar el tema y cerrar el modal
         body.classList.toggle("dark-mode");
         themeToggle.textContent = body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
+        modal.style.display = "none";
+    });
+
+    document.getElementById("confirm-no").addEventListener("click", function() {
+        // Solo cerrar el modal
+        modal.style.display = "none";
     });
 
     tabContents[0].classList.add("active");
@@ -61,3 +85,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
