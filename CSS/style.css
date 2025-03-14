@@ -1,4 +1,4 @@
-echo ':root {
+:root {
     --primary-color: #6a0dad;
     --background-light: #f4f4f4;
     --background-dark: #1a1a1a;
@@ -25,4 +25,40 @@ body {
 .dark-mode {
     background-color: var(--background-dark);
     color: var(--text-dark);
+}
+
+.card {
+    background: var(--card-bg-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    transition: background 0.3s;
+    padding: 20px;
+}
+
+.dark-mode .card {
+    background: var(--card-bg-dark);
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
 }
