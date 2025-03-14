@@ -1,0 +1,28 @@
+echo ':root {
+    --primary-color: #6a0dad;
+    --background-light: #f4f4f4;
+    --background-dark: #1a1a1a;
+    --text-light: #333;
+    --text-dark: #e0e0e0;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #2a2a2a;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
