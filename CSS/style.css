@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--background-light);
     color: var(--text-light);
     margin: 0;
@@ -63,6 +63,42 @@ header {
     transform: scale(1.05);
 }
 
+.click-instruction {
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-style: italic;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
 nav {
     text-align: center;
     margin: 20px 0;
@@ -89,4 +125,52 @@ nav {
 .tab-button:hover {
     background: #5b0cae;
     transform: scale(1.1);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: var(--card-bg-light);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dark-mode .tab-content {
+    background: var(--card-bg-dark);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.job {
+    margin-top: 20px;
+    padding: 15px;
+    border-left: 4px solid var(--primary-color);
+    background: var(--card-bg-light);
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+.dark-mode .job {
+    background: var(--card-bg-dark);
+}
+
+.social-link {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    color: #4a0c8e;
 }
