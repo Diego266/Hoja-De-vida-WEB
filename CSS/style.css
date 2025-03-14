@@ -62,3 +62,31 @@ header {
 .profile-image:hover {
     transform: scale(1.05);
 }
+
+nav {
+    text-align: center;
+    margin: 20px 0;
+    background: var(--card-bg-light);
+    padding: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.dark-mode nav {
+    background: var(--card-bg-dark);
+}
+
+.tab-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.tab-button:hover {
+    background: #5b0cae;
+    transform: scale(1.1);
+}
