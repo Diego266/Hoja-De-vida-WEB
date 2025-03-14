@@ -84,6 +84,13 @@ p {
     margin-bottom: 20px;
 }
 
+.job-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+    text-align: center; /* Centro el texto */
+    color: inherit; /* Mantengo el color predeterminado del texto */
+}
+
 button {
     background-color: var(--primary-color);
     color: white;
@@ -174,3 +181,5 @@ nav {
     transform: scale(1.1);
     color: #4a0c8e;
 }
+
+
