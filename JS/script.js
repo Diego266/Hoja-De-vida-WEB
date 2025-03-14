@@ -5,45 +5,42 @@ document.addEventListener("DOMContentLoaded", function() {
     const tabContents = document.querySelectorAll(".tab-content");
     const profileImage = document.querySelector(".profile-image");
 
-    // Crear el modal de confirmación
-    const modal = document.createElement("div");
-    modal.className = "modal";
-    modal.innerHTML = `
-        <div class="modal-content">
-            <p>¿Realmente deseas cambiar el color del tema?</p>
-            <button class="modal-button" id="confirm-yes">Sí</button>
-            <button class="modal-button" id="confirm-no">No</button>
-        </div>
-    `;
-    document.body.appendChild(modal);
+    // Crear función para mostrar el modal
+    function showModal() {
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.innerHTML = `
+            <div class="modal-content">
+                <p>¿Realmente deseas cambiar el color del tema?</p>
+                <button class="modal-button" data-action="yes">Sí</button>
+                <button class="modal-button" data-action="no">No</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
 
-    themeToggle.addEventListener("click", function() {
-        // Mostrar el modal
+        modal.addEventListener("click", (event) => {
+            if (event.target.dataset.action === "yes") {
+                body.classList.toggle("dark-mode");
+                themeToggle.textContent = body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
+            }
+            if (event.target.dataset.action) {
+                document.body.removeChild(modal);
+            }
+        });
+
         modal.style.display = "flex";
-    });
+    }
 
-    document.getElementById("confirm-yes").addEventListener("click", function() {
-        // Cambiar el tema y cerrar el modal
-        body.classList.toggle("dark-mode");
-        themeToggle.textContent = body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
-        modal.style.display = "none";
-    });
+    themeToggle.addEventListener("click", showModal);
 
-    document.getElementById("confirm-no").addEventListener("click", function() {
-        // Solo cerrar el modal
-        modal.style.display = "none";
-    });
-
+    // Activar el primer contenido de pestaña por defecto
     tabContents[0].classList.add("active");
 
     tabButtons.forEach(button => {
         button.addEventListener("click", function() {
             const tab = this.getAttribute("data-tab");
 
-            tabContents.forEach(content => {
-                content.classList.remove("active");
-            });
-
+            tabContents.forEach(content => content.classList.remove("active"));
             document.getElementById(tab).classList.add("active");
 
             tabButtons.forEach(btn => btn.classList.remove("active-tab"));
@@ -51,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Añadir desplazamiento suave a los botones de navegación
     document.querySelectorAll('nav button').forEach(button => {
         button.addEventListener('click', function() {
             const tab = this.getAttribute('data-tab');
@@ -58,29 +56,34 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Ampliar imagen de perfil al hacer clic
     profileImage.addEventListener("click", function() {
         const imageOverlay = document.createElement("div");
-        imageOverlay.style.position = "fixed";
-        imageOverlay.style.top = "0";
-        imageOverlay.style.left = "0";
-        imageOverlay.style.width = "100%";
-        imageOverlay.style.height = "100%";
-        imageOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-        imageOverlay.style.display = "flex";
-        imageOverlay.style.justifyContent = "center";
-        imageOverlay.style.alignItems = "center";
-        imageOverlay.style.cursor = "zoom-out";
-        imageOverlay.style.zIndex = "1000";
+        Object.assign(imageOverlay.style, {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "zoom-out",
+            zIndex: 1000
+        });
 
         const imageClone = this.cloneNode();
-        imageClone.style.width = "50%";
-        imageClone.style.height = "auto";
-        imageClone.style.border = "none";
+        Object.assign(imageClone.style, {
+            width: "50%",
+            height: "auto",
+            border: "none"
+        });
 
         imageOverlay.appendChild(imageClone);
         document.body.appendChild(imageOverlay);
 
-        imageOverlay.addEventListener("click", function() {
+        imageOverlay.addEventListener("click", () => {
             document.body.removeChild(imageOverlay);
         });
     });
